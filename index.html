@@ -295,6 +295,102 @@
             box-shadow: 0 8px 20px black;
             display: none;
         }
+         .countdown-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            border-radius: 48px;
+            padding: 30px 24px 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            text-align: center;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            max-width: 750px;
+            width: 80%;
+            transition: all 0.3s;
+            margin: auto;
+        }
+
+        .target-date {
+            color: #FFB347;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            border-bottom: 1px dashed rgba(255,180,70,0.5);
+            display: inline-block;
+            padding-bottom: 6px;
+        }
+
+        .timer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 25px 0 20px;
+        }
+
+        .time-block {
+            background: #0a121c;
+            border-radius: 28px;
+            padding: 18px 12px;
+            min-width: 100px;
+            box-shadow: 0 8px 12px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);
+            border-bottom: 3px solid #FFB347;
+        }
+
+        .time-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #FFD966;
+            line-height: 1.2;
+            letter-spacing: 2px;
+            font-family: 'Courier New', 'Fira Mono', monospace;
+        }
+
+        .time-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #9bb7d4;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        .expired-message {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #FFA559;
+            background: rgba(0,0,0,0.5);
+            padding: 20px;
+            border-radius: 48px;
+            margin: 20px 0;
+        }
+
+        .note {
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: #bdd4e8;
+            background: rgba(0,0,0,0.3);
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 60px;
+        }
+
+        @media (max-width: 550px) {
+            .countdown-card {
+                padding: 20px 16px;
+            }
+            .time-block {
+                min-width: 70px;
+                padding: 12px 8px;
+            }
+            .time-number {
+                font-size: 2.3rem;
+            }
+            .time-label {
+                font-size: 0.7rem;
+            }
+            h2 {
+                font-size: 1.4rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -312,7 +408,7 @@
             </div>
         </div>
         <div style="max-width: 1000px;">
-            <h1 style="font-size: 2.6rem; margin-bottom: 1rem;">🔥 SỰ KIỆN THAY NHỚT <br> & TẶNG ÁO THUN BE MIỄN PHÍ & GÓI BẢO DƯỠNG<br><span style="color: #f6b26b;">GIÁ CỰC ƯU ĐÃI</span></h1>
+            <h1 style="font-size: 2.6rem; margin-bottom: 1rem;">🔥 SỰ KIỆN THAY NHỚT ĐỒNG GIÁ 150.000Đ<br> & TẶNG ÁO THUN BE MIỄN PHÍ & GÓI BẢO DƯỠNG<br><span style="color: #f6b26b;">GIÁ CỰC ƯU ĐÃI</span></h1>
             <p style="font-size: 1.2rem; margin-bottom: 24px; opacity: 0.9;">Tặng ngay <strong>“ÁO CHIẾN BE x AMBER”</strong> độc quyền + kiểm tra hơn 9 hạng mục MIỄN PHÍ tại hơn 20 cửa hàng/phường tại khu vực TP.HCM</p>
             <div style="display: flex; flex-wrap: wrap; gap: 16px;">
                 <a href="#dangky" class="btn"><i class="fas fa-gift"></i> Đăng ký nhận ưu đãi ngay</a>
@@ -349,7 +445,7 @@
         <div class="section">
             <div style="text-align: center; margin-bottom: 32px;">
                 <span class="badge"><i class="fas fa-check-double"></i> MIỄN PHÍ TOÀN BỘ</span>
-                <h2>🏍️ Kiểm tra xe tổng thể 9 hạng mục</h2>
+                <h2>🏍️ Thay nhớt đồng giá 150.000đ tặng kiểm tra xe tổng thể hơn 9 hạng mục</h2>
                 <p>Đội ngũ kỹ thuật viên giàu kinh nghiệm – tận tâm tại cửa hàng đối tác</p>
             </div>
             <div class="grid-2">
@@ -359,7 +455,7 @@
                     <div class="checklist">
                         <span><i class="fas fa-check-circle"></i> Áp suất lốp trước/sau</span>
                         <span><i class="fas fa-car-side"></i> Hệ thống điện, đèn, còi</span>
-                        <span><i class="fas fa-brake-warning"></i> Thắng trước/sau</span>
+                        <span><i class="fas fa-motorcycle"></i> Thắng trước/sau</span>
                         <span><i class="fas fa-cogs"></i> Bạc đạn bánh trước/sau</span>
                         <span><i class="fas fa-oil-can"></i> Bi, chén, cổ (cổ phốt)</span>
                         <span><i class="fas fa-motorcycle"></i> Phuộc trước/sau</span>
@@ -373,7 +469,7 @@
                     <h3 style="margin: 12px 0 8px;">💧 Thay nhớt công nghệ cao</h3>
                     <p>Dầu nhớt đạt chuẩn Châu Âu, kiểm định SGS Thụy Sĩ & Quatest 4 (Bộ Khoa học CN). <strong>Giá cực kỳ ưu đãi dành riêng cho khách đăng ký sự kiện.</strong></p>
                     <div class="price-highlight" style="margin-top: 12px; padding: 14px;">
-                        <i class="fas fa-tag"></i> <strong>Giá ưu đãi cố định cho sự kiện:</strong> Nhớt công nghệ Đức cao cấp  <span style="font-size: 1.5rem; font-weight: 800;">150.000đ</span>/ lon (chai)
+                        <i class="fas fa-tag"></i> <strong>Giá ưu đãi chỉ áp dụng trong sự kiện:</strong> Nhớt công nghệ Đức cao cấp đồng giá chỉ <span style="font-size: 1.5rem; font-weight: 800;">150.000đ</span>/ lon (chai)
                         <div style="font-size: 0.75rem; margin-top: 6px;">*Tuỳ dòng xe & loại nhớt, liên hệ cửa hàng để được tư vấn chính xác</div>
                     </div>
                 </div>
@@ -384,8 +480,8 @@
         <div class="section" id="goi-bao-duong">
             <div style="text-align: center;">
                 <span class="badge"><i class="fas fa-star"></i> SIÊU TIẾT KIỆM</span>
-                <h2>⚙️ Bảo dưỡng chuyên sâu – Combo vàng</h2>
-                <p>Hỗ trợ từ đối tác AMBER – Giảm sâu lên đến 40%</p>
+                <h2>⚙️ Bảo dưỡng chuyên sâu – Combo Vàng</h2>
+                <p>Hỗ trợ từ đối tác AMBER – Giảm sâu lên đến 40% (Chỉ áp dụng trong sự kiện)</p>
             </div>
             <div class="grid-2" style="margin-top: 32px;">
                 <!-- Xe tay ga -->
@@ -423,18 +519,13 @@
                     <div class="free-tag" style="background: #e6f4ea;">✅ Tiết kiệm 30.000đ</div>
                 </div>
             </div>
-            <div class="partner-strip" style="margin-top: 32px;">
-                <div><i class="fas fa-handshake"></i> <strong>Hợp tác cùng BE</strong> – dành riêng cho shipper & khách hàng thân thiết</div>
-                <div><i class="fas fa-map-marker-alt"></i> Hơn 20 cửa hàng/phường tại khu vực TP.HCM, dễ dàng tìm điểm hẹn</div>
-                <div><i class="fas fa-percent"></i> Giảm giá 10% trọn đời các chi phí sửa chữa khác tại tiệm</div>
-            </div>
         </div>
 
         <!-- thông tin chứng nhận & đối tác -->
         <div class="section">
             <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; align-items: center;">
                 <div><i class="fas fa-certificate" style="font-size: 2rem; color: var(--amber);"></i> <strong>Tiêu chuẩn Châu Âu</strong><br> <span style="font-size: 0.8rem;">SGS Thụy Sĩ · Quatest 4</span></div>
-                <div><i class="fas fa-users" style="font-size: 2rem; color: var(--amber);"></i> <strong>Cộng đồng AMBER & SONG KIÊN</strong><br> <span style="font-size: 0.8rem;">Hàng trăm chủ tiệm uy tín trải khắp khu vực miền Nam</span></div>
+                <div><i class="fas fa-users" style="font-size: 2rem; color: var(--amber);"></i> <strong>Cộng đồng các tiệm đối tác của AMBER & SONG KIÊN</strong><br> <span style="font-size: 0.8rem;">Hàng trăm chủ tiệm uy tín trải khắp khu vực miền Nam</span></div>
                 <div><i class="fas fa-gem" style="font-size: 2rem; color: var(--amber);"></i> <strong>Dầu nhớt công nghệ cao</strong><br> <span style="font-size: 0.8rem;">Bảo vệ động cơ vượt trội cùng phụ gia Đức chất lượng cao</span></div>
             </div>
         </div>
@@ -448,41 +539,100 @@
                         <h2 style="margin-top: 8px;">Đăng ký ngay hôm nay</h2>
                         <p>Nhận áo chiến BE + phiếu ưu đãi thay nhớt và bảo dưỡng chuyên sâu giá rẻ</p>
                     </div>
-                    <form id="registerEventForm">
-                        <div class="form-group">
-                            <label>Họ và tên <span style="color: var(--amber);">*</span></label>
-                            <input type="text" id="fullname" placeholder="Ví dụ: Nguyễn Văn A" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Số điện thoại <span style="color: var(--amber);">*</span></label>
-                            <input type="tel" id="phone" placeholder="0987 654 321" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Biển số xe / Dòng xe (gợi ý)</label>
-                            <input type="text" id="bikeInfo" placeholder="Ví dụ: 59X1-123.45 / Honda Lead">
-                        </div>
-                        <div class="form-group">
-                            <label>Dịch vụ quan tâm</label>
-                            <select id="serviceInterest">
-                                <option value="thay_nhot_uu_dai">Thay nhớt giá ưu đãi + kiểm tra miễn phí</option>
-                                <option value="goi_chuyen_sau_tay_ga">Gói bảo dưỡng chuyên sâu (xe tay ga - 80k)</option>
-                                <option value="goi_chuyen_sau_so">Gói bảo dưỡng chuyên sâu (xe số - 40k)</option>
-                                <option value="tat_ca">Tất cả ưu đãi + nhận áo chiến</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Khu vực sinh sống (để gợi ý cửa hàng gần nhất)</label>
-                            <input type="text" id="area" placeholder="Quận/Huyện, Phường/Xã...">
-                        </div>
-                        <button type="submit" class="btn" style="width: 100%; justify-content: center;"><i class="fas fa-calendar-check"></i> Đăng ký ngay - Nhận ưu đãi</button>
-                        <p style="font-size: 0.7rem; text-align: center; margin-top: 16px;">Thông tin sẽ được gửi đến đối tác AMBER để xác nhận và hẹn lịch tại tiệm gần nhất.</p>
-                    </form>
+                    <div> <strong>Bước 1:</strong> Khách vui lòng kết bạn trên ứng dụng Zalo qua số điện thoại: <strong>0963 141 557 (Song Kiên)</strong></div>
+                    <div><strong>Bước 2:</strong> Gửi hình CCCD trên ứng dụng VneID + SĐT (Có đăng ký Zalo) + Size áo + Địa chỉ hiện nay để bố trí cửa hàng thay nhớt và nhận áo.</div>
+                    <div style="text-align: center; margin: 15px 0;">
+    <img src="/size áo.jpg" alt="Bảng size áo" style="max-width: 90%; height: auto; border-radius: 8px;">
+    <div style="margin-top: 8px;">Bảng size áo tham khảo</div>
+</div>
+                    <div><strong>Bước 3:</strong> Gửi ảnh chụp màn hình thanh toán thành công <strong>150.000đ</strong> vào <strong>HỘ KINH DOANH SONG KIÊN - 1095748888</strong> (Chỉ chuyển 150.000đ cho vé đăng ký, nếu khách muốn mua gói bảo dưỡng chuyên sâu, vui lòng thanh toán tại tiệm đối tác)</div>
+                    <div style="text-align: center; margin: 15px 0;">
+    <img src="/QR code.jpg" alt="Bảng size áo" style="max-width: 50%; height: auto; border-radius: 8px;">
+</div>
+                    <div><strong>Bước 4:</strong> Chờ chúng tôi xác nhận giao dịch.</div>
+                    
+                    <br>
+                    <div class="price-highlight" style="margin-top: 12px; padding: 14px;">
+                        <i class="fas fa-tag"></i> <strong>Lưu ý: </strong> Do số lượng áo chỉ đủ cho 1.000 đến 1.500 bác tài nên thời gian đăng ký có thể ngắn hơn hoặc dài hơn dự kiến
+                        <div style="font-size: 0.75rem; margin-top: 6px;">Chúng tôi sẽ thông báo khi số lượng đăng ký đủ (Thời hạn đăng ký không quá 45 ngày)</div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </main>
+<div class="countdown-card" style="margin: center;">
+    <h2>⏳ SỰ KIỆN QUAN TRỌNG</h2>
+    <div class="target-date">🎯 MỐC THỜI GIAN: <strong>31/05/2026</strong></div>
 
+    <div class="timer" id="timerDisplay">
+        <div class="time-block">
+            <div class="time-number" id="days">00</div>
+            <div class="time-label">NGÀY</div>
+        </div>
+        <div class="time-block">
+            <div class="time-number" id="hours">00</div>
+            <div class="time-label">GIỜ</div>
+        </div>
+        <div class="time-block">
+            <div class="time-number" id="minutes">00</div>
+            <div class="time-label">PHÚT</div>
+        </div>
+        <div class="time-block">
+            <div class="time-number" id="seconds">00</div>
+            <div class="time-label">GIÂY</div>
+        </div>
+    </div>
+    <div class="note">🌟 Đếm ngược đến 23:59:59 ngày 31 tháng 05 năm 2026</div>
+</div>
+
+<script>
+    (function() {
+        // Mốc thời gian kết thúc: 31/05/2026, 23:59:59 (theo giờ Việt Nam GMT+7)
+        // Để chuẩn xác, set rõ ràng: năm, tháng (5 = tháng 6 trong JS? Lưu ý: tháng trong JS tính từ 0)
+        // Ngày 31/05/2026 -> month index = 4 (vì 0 là tháng 1)
+        const targetDate = new Date(2026, 4, 31, 23, 59, 59);  // 31/05/2026, 23:59:59
+
+        function updateCountdown() {
+            const now = new Date(); // lấy thời gian hiện tại (máy khách)
+            const diff = targetDate - now; // chênh lệch milliseconds
+
+            // Nếu đã qua mốc thời gian
+            if (diff <= 0) {
+                document.getElementById('days').innerText = '00';
+                document.getElementById('hours').innerText = '00';
+                document.getElementById('minutes').innerText = '00';
+                document.getElementById('seconds').innerText = '00';
+                // (Tùy chọn) có thể hiển thị thông báo hết hạn
+                const timerDiv = document.getElementById('timerDisplay');
+                if (!document.querySelector('.expired-message')) {
+                    const expiredMsg = document.createElement('div');
+                    expiredMsg.className = 'expired-message';
+                    expiredMsg.innerText = '🚀 SỰ KIỆN ĐÃ BẮT ĐẦU! 🚀';
+                    timerDiv.parentNode.insertBefore(expiredMsg, timerDiv.nextSibling);
+                }
+                return;
+            }
+
+            // Tính toán
+            const totalSeconds = Math.floor(diff / 1000);
+            const days = Math.floor(totalSeconds / 86400);
+            const hours = Math.floor((totalSeconds % 86400) / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+
+            // Cập nhật giao diện (luôn hiển thị 2 chữ số)
+            document.getElementById('days').innerText = days < 10 ? '0' + days : days;
+            document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+            document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+        }
+
+        // Cập nhật ngay lập tức, sau đó chạy mỗi giây
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    })();
+</script>
 <footer class="footer">
     <div class="container">
         <div style="display: flex; flex-direction: column; gap: 12px;">
@@ -493,86 +643,5 @@
         </div>
     </div>
 </footer>
-
-<div id="toastMsg" class="toast-message"><i class="fas fa-check-circle"></i> Đăng ký thành công! Nhân viên sẽ liên hệ trong 24h và gửi thông tin nhận áo chiến BE.</div>
-
-<script>
-    (function() {
-        const form = document.getElementById('registerEventForm');
-        const toast = document.getElementById('toastMsg');
-        const ZALO_PHONE = '0357182609';
-         function showToast(message, isError = false) {
-        toast.innerHTML = message;
-        toast.style.background = isError ? '#d32f2f' : '#1e1e2a';
-        toast.style.display = 'block';
-        setTimeout(() => {
-            toast.style.display = 'none';
-            toast.style.background = '#1e1e2a';
-        }, 5000);
-    }
-
-    // Tạo nội dung tin nhắn
-    function buildMessage() {
-        const fullname = document.getElementById('fullname').value.trim();
-        const phone = document.getElementById('phone').value.trim();
-        const bikeInfo = document.getElementById('bikeInfo').value.trim();
-        const serviceSelect = document.getElementById('serviceInterest');
-        const service = serviceSelect.options[serviceSelect.selectedIndex]?.text || '';
-        const area = document.getElementById('area').value.trim();
-
-        return `📌 ĐĂNG KÝ SỰ KIỆN THAY NHỚT & ÁO CHIẾN BE\n\n👤 Họ tên: ${fullname}\n📞 SĐT: ${phone}\n🏍️ Xe: ${bikeInfo || 'Chưa cập nhật'}\n⚙️ Dịch vụ quan tâm: ${service}\n📍 Khu vực: ${area || 'Chưa cập nhật'}\n\n(Thông tin từ form đăng ký website AMBER × SONG KIÊN)`;
-    }
-
-    // Mở Zalo với nội dung được điền sẵn (không tự gửi được)
-    function openZaloWithMessage(message) {
-        const encodedMsg = encodeURIComponent(message);
-        // Dùng scheme chính thức của Zalo: zalo://chat?phone=xxx&msg=xxx
-        const zaloAppUrl = `zalo://chat?phone=${ZALO_PHONE}&msg=${encodedMsg}`;
-        // Fallback web: https://zalo.me/0357182609?text=...
-        const zaloWebUrl = `https://zalo.me/${ZALO_PHONE}?text=${encodedMsg}`;
-
-        // Thử mở app trước
-        const iframe = document.createElement('iframe');
-        iframe.style.display = 'none';
-        iframe.src = zaloAppUrl;
-        document.body.appendChild(iframe);
-        setTimeout(() => {
-            document.body.removeChild(iframe);
-            // Nếu không mở được app (không cài Zalo), mở web
-            window.open(zaloWebUrl, '_blank');
-        }, 300);
-    }
-
-    form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-
-        const fullname = document.getElementById('fullname').value.trim();
-        const phone = document.getElementById('phone').value.trim();
-
-        if (!fullname || !phone) {
-            alert('Vui lòng nhập họ tên và số điện thoại để nhận ưu đãi.');
-            return;
-        }
-        if (!/^[0-9]{9,11}$/.test(phone.replace(/\s/g, ''))) {
-            alert('Số điện thoại không hợp lệ. Vui lòng nhập đúng số điện thoại (9-11 số).');
-            return;
-        }
-
-        const message = buildMessage();
-
-        // 1. Copy vào clipboard (dự phòng)
-        await navigator.clipboard.writeText(message);
-        
-        // 2. Mở Zalo với nội dung đã điền sẵn
-        openZaloWithMessage(message);
-
-        // 3. Thông báo
-        showToast(`✅ Đã sao chép thông tin & mở Zalo. Vui lòng bấm "Gửi" trong Zalo để hoàn tất đăng ký.`, false);
-        
-        // Không reset form để user có thể xem lại, nhưng có thể tuỳ chọn
-        // form.reset();
-    });
-    })();
-</script>
 </body>
 </html>
