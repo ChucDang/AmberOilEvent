@@ -501,43 +501,53 @@
         const form = document.getElementById('registerEventForm');
         const toast = document.getElementById('toastMsg');
         const ZALO_PHONE = '0357182609';
-        function showToast(message, isError = false) {
-        toast.innerHTML = message || (isError ? '❌ Có lỗi xảy ra, vui lòng thử lại.' : '✅ Đăng ký thành công! Thông tin đã sẵn sàng gửi qua Zalo.');
+         function showToast(message, isError = false) {
+        toast.innerHTML = message;
         toast.style.background = isError ? '#d32f2f' : '#1e1e2a';
         toast.style.display = 'block';
         setTimeout(() => {
             toast.style.display = 'none';
-            toast.style.background = '#1e1e2a'; // reset
+            toast.style.background = '#1e1e2a';
         }, 5000);
     }
 
-    function copyToClipboard(text) {
-        return navigator.clipboard.writeText(text).then(() => true).catch(() => false);
-    }
-
-    function openZaloChat() {
-        // Thử mở bằng Zalo app scheme (mobile) trước, nếu không thì fallback web
-        const zaloAppUrl = `zalo://chat?phone=${ZALO_PHONE}`;
-        const zaloWebUrl = `https://zalo.me/${ZALO_PHONE}`;
-        const iframe = document.createElement('iframe');
-        iframe.style.display = 'none';
-        iframe.src = zaloAppUrl;
-        document.body.appendChild(iframe);
-        setTimeout(() => {
-            document.body.removeChild(iframe);
-            // Nếu không chuyển hướng được (không có app), mở web
-            window.open(zaloWebUrl, '_blank');
-        }, 500);
-    }
-
-    form.addEventListener('submit', async function(e) {
-        e.preventDefault();
+    // Tạo nội dung tin nhắn
+    function buildMessage() {
         const fullname = document.getElementById('fullname').value.trim();
         const phone = document.getElementById('phone').value.trim();
         const bikeInfo = document.getElementById('bikeInfo').value.trim();
         const serviceSelect = document.getElementById('serviceInterest');
         const service = serviceSelect.options[serviceSelect.selectedIndex]?.text || '';
         const area = document.getElementById('area').value.trim();
+
+        return `📌 ĐĂNG KÝ SỰ KIỆN THAY NHỚT & ÁO CHIẾN BE\n\n👤 Họ tên: ${fullname}\n📞 SĐT: ${phone}\n🏍️ Xe: ${bikeInfo || 'Chưa cập nhật'}\n⚙️ Dịch vụ quan tâm: ${service}\n📍 Khu vực: ${area || 'Chưa cập nhật'}\n\n(Thông tin từ form đăng ký website AMBER × SONG KIÊN)`;
+    }
+
+    // Mở Zalo với nội dung được điền sẵn (không tự gửi được)
+    function openZaloWithMessage(message) {
+        const encodedMsg = encodeURIComponent(message);
+        // Dùng scheme chính thức của Zalo: zalo://chat?phone=xxx&msg=xxx
+        const zaloAppUrl = `zalo://chat?phone=${ZALO_PHONE}&msg=${encodedMsg}`;
+        // Fallback web: https://zalo.me/0357182609?text=...
+        const zaloWebUrl = `https://zalo.me/${ZALO_PHONE}?text=${encodedMsg}`;
+
+        // Thử mở app trước
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = zaloAppUrl;
+        document.body.appendChild(iframe);
+        setTimeout(() => {
+            document.body.removeChild(iframe);
+            // Nếu không mở được app (không cài Zalo), mở web
+            window.open(zaloWebUrl, '_blank');
+        }, 300);
+    }
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const fullname = document.getElementById('fullname').value.trim();
+        const phone = document.getElementById('phone').value.trim();
 
         if (!fullname || !phone) {
             alert('Vui lòng nhập họ tên và số điện thoại để nhận ưu đãi.');
@@ -548,24 +558,18 @@
             return;
         }
 
-        // Tạo nội dung tin nhắn để gửi qua Zalo
-        const message = `📌 ĐĂNG KÝ SỰ KIỆN THAY NHỚT & ÁO CHIẾN BE\n\n👤 Họ tên: ${fullname}\n📞 SĐT: ${phone}\n🏍️ Xe: ${bikeInfo || 'Chưa cập nhật'}\n⚙️ Dịch vụ quan tâm: ${service}\n📍 Khu vực: ${area || 'Chưa cập nhật'}\n\n(Thông tin từ form đăng ký website AMBER × SONG KIÊN)`;
+        const message = buildMessage();
 
-        // Sao chép nội dung vào clipboard
-        const copied = await copyToClipboard(message);
-        if (copied) {
-            showToast(`📋 Đã sao chép thông tin đăng ký. Vui lòng mở Zalo và gửi tin nhắn đến số ${ZALO_PHONE} để hoàn tất.`, false);
-        } else {
-            showToast(`⚠️ Không thể tự động sao chép. Vui lòng tự gửi thông tin qua Zalo số ${ZALO_PHONE}.`, true);
-        }
+        // 1. Copy vào clipboard (dự phòng)
+        await navigator.clipboard.writeText(message);
+        
+        // 2. Mở Zalo với nội dung đã điền sẵn
+        openZaloWithMessage(message);
 
-        // Mở Zalo chat (app hoặc web)
-        openZaloChat();
-
-        // Tuỳ chọn: reset một số trường nhưng giữ lại để dễ gửi? Có thể reset toàn bộ
-        // form.reset(); // Không reset ngay để người dùng có thể thấy lại thông tin nếu cần
-        // Thay vào đó, chỉ xoá nếu muốn, nhưng tôi không reset để tránh mất dữ liệu vừa copy
-        // Bạn có thể bỏ comment dòng dưới nếu muốn reset
+        // 3. Thông báo
+        showToast(`✅ Đã sao chép thông tin & mở Zalo. Vui lòng bấm "Gửi" trong Zalo để hoàn tất đăng ký.`, false);
+        
+        // Không reset form để user có thể xem lại, nhưng có thể tuỳ chọn
         // form.reset();
     });
     })();
