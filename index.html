@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>AMBER × SONG KIÊN | Sự kiện thay nhớt & bảo dưỡng xe</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fefcf5;
+            color: #1e1e2a;
+            line-height: 1.5;
+        }
+
+        /* container chung */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* màu chủ đạo: amber (hổ phách) + đen thanh lịch */
+        :root {
+            --amber: #e67e22;
+            --amber-dark: #b45f1b;
+            --gold-light: #ffecd6;
+            --black-rich: #1f1f2b;
+            --gray-soft: #f8f6f0;
+            --shadow-sm: 0 8px 20px rgba(0,0,0,0.03), 0 2px 6px rgba(0,0,0,0.05);
+            --shadow-md: 0 12px 28px rgba(0,0,0,0.08);
+            --radius-card: 24px;
+        }
+
+        /* typography */
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.3px;
+            position: relative;
+            display: inline-block;
+        }
+        h2:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--amber);
+            border-radius: 4px;
+            margin-top: 8px;
+        }
+        .section {
+            padding: 60px 0;
+            border-bottom: 1px solid #f0e7da;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .badge {
+            background: var(--amber);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+            letter-spacing: 0.3px;
+        }
+
+        /* header */
+        .hero {
+            background: linear-gradient(135deg, #2c2418 0%, #1a1610 100%);
+            color: white;
+            border-radius: 0 0 40px 40px;
+            padding: 40px 0 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+        .hero-badge {
+            background: rgba(230,126,34,0.2);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(230,126,34,0.5);
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--amber);
+            color: white;
+            font-weight: 700;
+            padding: 14px 28px;
+            border-radius: 60px;
+            text-decoration: none;
+            transition: 0.25s ease;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .btn i {
+            font-size: 1.1rem;
+        }
+        .btn:hover {
+            background: var(--amber-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--amber);
+            color: var(--amber);
+            box-shadow: none;
+        }
+        .btn-outline:hover {
+            background: var(--amber);
+            color: white;
+        }
+
+        /* card grid */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .card {
+            background: white;
+            border-radius: var(--radius-card);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s;
+            border: 1px solid #f5ede2;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        .price-highlight {
+            background: var(--gold-light);
+            border-left: 5px solid var(--amber);
+            padding: 20px;
+            border-radius: 20px;
+        }
+        .price-old {
+            text-decoration: line-through;
+            color: #8f7a66;
+            font-size: 0.9rem;
+            margin-right: 12px;
+        }
+        .price-new {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--amber-dark);
+        }
+        .free-tag {
+            background: #e9f7ef;
+            color: #2e7d32;
+            font-weight: 700;
+            border-radius: 30px;
+            padding: 4px 12px;
+            font-size: 0.75rem;
+        }
+        .icon-feature {
+            font-size: 2rem;
+            color: var(--amber);
+            margin-bottom: 12px;
+        }
+        /* danh sách kiểm tra */
+        .checklist {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .checklist span {
+            background: #fef3e8;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .checklist span i {
+            color: var(--amber);
+            font-size: 0.8rem;
+        }
+
+        /* form */
+        .form-card {
+            background: white;
+            border-radius: 32px;
+            padding: 32px;
+            box-shadow: var(--shadow-md);
+        }
+        input, select {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 60px;
+            border: 1px solid #e2dcd2;
+            font-size: 1rem;
+            background: #fff;
+            transition: 0.2s;
+        }
+        input:focus {
+            outline: none;
+            border-color: var(--amber);
+            box-shadow: 0 0 0 3px rgba(230,126,34,0.2);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        /* responsive */
+        @media (max-width: 768px) {
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .section {
+                padding: 40px 0;
+            }
+            .price-new {
+                font-size: 1.6rem;
+            }
+            .container {
+                padding: 0 16px;
+            }
+            .btn {
+                padding: 12px 24px;
+            }
+        }
+
+        /* footer */
+        .footer {
+            background: #1e1b16;
+            color: #cfcbc4;
+            padding: 32px 0;
+            text-align: center;
+            font-size: 0.85rem;
+            border-radius: 30px 30px 0 0;
+            margin-top: 20px;
+        }
+
+        .partner-strip {
+            background: #fff6ed;
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+        .toast-message {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1e1e2a;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            z-index: 1000;
+            box-shadow: 0 8px 20px black;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 30px;">
+            <div>
+                <span class="badge hero-badge" style="background: rgba(230,126,34,0.9);"><i class="fas fa-oil-can"></i> Đối tác chính thức</span>
+                <div style="margin-top: 12px; font-weight: 600; font-size: 1.1rem;">Công ty TNHH AMBER ⨯ Công ty TNHH SONG KIÊN</div>
+            </div>
+            <div style="display: flex; gap: 12px;">
+                <i class="fas fa-check-circle" style="color: var(--amber);"></i> <span style="font-size: 0.85rem;">Dầu nhớt chuẩn Châu Âu</span>
+                <i class="fas fa-flask" style="color: var(--amber);"></i> <span style="font-size: 0.85rem;">SGS Thụy Sĩ & Quatest 4</span>
+            </div>
+        </div>
+        <div style="max-width: 1000px;">
+            <h1 style="font-size: 2.6rem; margin-bottom: 1rem;">🔥 SỰ KIỆN THAY NHỚT <br> & TẶNG ÁO THUN BE MIỄN PHÍ & GÓI BẢO DƯỠNG<br><span style="color: #f6b26b;">GIÁ CỰC ƯU ĐÃI</span></h1>
+            <p style="font-size: 1.2rem; margin-bottom: 24px; opacity: 0.9;">Tặng ngay <strong>“ÁO CHIẾN BE x AMBER”</strong> độc quyền + kiểm tra hơn 9 hạng mục MIỄN PHÍ tại hơn 20 cửa hàng/phường tại khu vực TP.HCM</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+                <a href="#dangky" class="btn"><i class="fas fa-gift"></i> Đăng ký nhận ưu đãi ngay</a>
+                <a href="#goi-bao-duong" class="btn btn-outline" style="background: transparent; color: white; border-color: white;"><i class="fas fa-wrench"></i> Xem gói bảo dưỡng</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main>
+    <div class="container">
+        <!-- Các ưu đãi nổi bật -->
+        <div class="section">
+            <div class="grid-3" style="margin-top: -20px;">
+                <div class="card">
+                    <i class="fas fa-tshirt icon-feature"></i>
+                    <h3>🎁 Áo chiến BE phiên bản giới hạn</h3>
+                    <p>Áo thun thiết kế độc quyền kết hợp <strong>AMBER & BE</strong>, chất liệu cao cấp, tặng ngay khi đăng ký tham gia sự kiện.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-store icon-feature"></i>
+                    <h3>📍 Mạng lưới rộng khắp</h3>
+                    <p>~20 cửa hàng/phường trên toàn khu vực TP.HCM. Các tiệm đối tác nhập dầu nhớt chính hãng từ AMBER & SONG KIÊN.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-percent icon-feature"></i>
+                    <h3>Giảm thêm 10% VĨNH VIỄN</h3>
+                    <p>Chủ tiệm hỗ trợ giảm giá TRỌN ĐỜI 10% cho các dịch vụ sửa chữa phát sinh ngoài chương trình. Tiết kiệm tối đa.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kiểm tra miễn phí -->
+        <div class="section">
+            <div style="text-align: center; margin-bottom: 32px;">
+                <span class="badge"><i class="fas fa-check-double"></i> MIỄN PHÍ TOÀN BỘ</span>
+                <h2>🏍️ Kiểm tra xe tổng thể 9 hạng mục</h2>
+                <p>Đội ngũ kỹ thuật viên giàu kinh nghiệm – tận tâm tại cửa hàng đối tác</p>
+            </div>
+            <div class="grid-2">
+                <div class="card">
+                    <i class="fas fa-tachometer-alt" style="color: var(--amber); font-size: 1.8rem;"></i>
+                    <h3 style="margin: 12px 0 8px;">Kiểm tra an toàn & vận hành</h3>
+                    <div class="checklist">
+                        <span><i class="fas fa-check-circle"></i> Áp suất lốp trước/sau</span>
+                        <span><i class="fas fa-car-side"></i> Hệ thống điện, đèn, còi</span>
+                        <span><i class="fas fa-brake-warning"></i> Thắng trước/sau</span>
+                        <span><i class="fas fa-cogs"></i> Bạc đạn bánh trước/sau</span>
+                        <span><i class="fas fa-oil-can"></i> Bi, chén, cổ (cổ phốt)</span>
+                        <span><i class="fas fa-motorcycle"></i> Phuộc trước/sau</span>
+                        <span><i class="fas fa-chain"></i> Bộ truyền động</span>
+                        <span><i class="fas fa-microchip"></i> Đánh giá bên ngoài động cơ</span>
+                    </div>
+                    <div class="free-tag" style="margin-top: 16px; display: inline-block;"><i class="fas fa-heart"></i> 100% miễn phí – không phát sinh chi phí</div>
+                </div>
+                <div class="card" style="background: #FFF8F0;">
+                    <i class="fas fa-oil-can" style="color: var(--amber); font-size: 1.8rem;"></i>
+                    <h3 style="margin: 12px 0 8px;">💧 Thay nhớt công nghệ cao</h3>
+                    <p>Dầu nhớt đạt chuẩn Châu Âu, kiểm định SGS Thụy Sĩ & Quatest 4 (Bộ Khoa học CN). <strong>Giá cực kỳ ưu đãi dành riêng cho khách đăng ký sự kiện.</strong></p>
+                    <div class="price-highlight" style="margin-top: 12px; padding: 14px;">
+                        <i class="fas fa-tag"></i> <strong>Giá ưu đãi cố định cho sự kiện:</strong> Nhớt công nghệ Đức cao cấp  <span style="font-size: 1.5rem; font-weight: 800;">150.000đ</span>/ lon (chai)
+                        <div style="font-size: 0.75rem; margin-top: 6px;">*Tuỳ dòng xe & loại nhớt, liên hệ cửa hàng để được tư vấn chính xác</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GÓI BẢO DƯỠNG CHUYÊN SÂU (giá sốc) -->
+        <div class="section" id="goi-bao-duong">
+            <div style="text-align: center;">
+                <span class="badge"><i class="fas fa-star"></i> SIÊU TIẾT KIỆM</span>
+                <h2>⚙️ Bảo dưỡng chuyên sâu – Combo vàng</h2>
+                <p>Hỗ trợ từ đối tác AMBER – Giảm sâu lên đến 40%</p>
+            </div>
+            <div class="grid-2" style="margin-top: 32px;">
+                <!-- Xe tay ga -->
+                <div class="card" style="border-top: 6px solid var(--amber);">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3><i class="fas fa-motorcycle"></i> Xe tay ga</h3>
+                        <span class="free-tag" style="background: var(--amber); color: white;">Hot nhất</span>
+                    </div>
+                    <div style="margin: 16px 0;">
+                        <span class="price-old">170.000đ</span>
+                        <span class="price-new">Chỉ còn 100.000đ</span>
+                    </div>
+                    <ul style="list-style: none; margin: 16px 0;">
+                        <li><i class="fas fa-check-circle" style="color: var(--amber);"></i> Chăm dầu thắng</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--amber);"></i> Vệ sinh lọc gió</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--amber);"></i> Tra dầu dây ga</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--amber);"></i> Vệ sinh nồi</li>
+                    </ul>
+                    <div class="free-tag" style="background: #fff0e0;">✅ Tiết kiệm 70.000đ – Bảo dưỡng toàn diện</div>
+                </div>
+                <!-- Xe số -->
+                <div class="card">
+                    <h3><i class="fas fa-bicycle"></i> Xe số</h3>
+                    <div style="margin: 16px 0;">
+                        <span class="price-old">80.000đ</span>
+                        <span class="price-new">Chỉ còn 50.000đ</span>
+                    </div>
+                    <ul style="list-style: none; margin: 16px 0;">
+                        <li><i class="fas fa-check-circle" style="color: var(--amber);"></i> Chăm dầu thắng</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--amber);"></i> Vệ sinh lọc gió</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--amber);"></i> Tra dầu dây ga</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--amber);"></i> Vệ sinh nhông sên</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--amber);"></i> Tăng thắng, tăng sên</li>
+                    </ul>
+                    <div class="free-tag" style="background: #e6f4ea;">✅ Tiết kiệm 30.000đ</div>
+                </div>
+            </div>
+            <div class="partner-strip" style="margin-top: 32px;">
+                <div><i class="fas fa-handshake"></i> <strong>Hợp tác cùng BE</strong> – dành riêng cho shipper & khách hàng thân thiết</div>
+                <div><i class="fas fa-map-marker-alt"></i> Hơn 20 cửa hàng/phường tại khu vực TP.HCM, dễ dàng tìm điểm hẹn</div>
+                <div><i class="fas fa-percent"></i> Giảm giá 10% trọn đời các chi phí sửa chữa khác tại tiệm</div>
+            </div>
+        </div>
+
+        <!-- thông tin chứng nhận & đối tác -->
+        <div class="section">
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; align-items: center;">
+                <div><i class="fas fa-certificate" style="font-size: 2rem; color: var(--amber);"></i> <strong>Tiêu chuẩn Châu Âu</strong><br> <span style="font-size: 0.8rem;">SGS Thụy Sĩ · Quatest 4</span></div>
+                <div><i class="fas fa-users" style="font-size: 2rem; color: var(--amber);"></i> <strong>Cộng đồng AMBER & SONG KIÊN</strong><br> <span style="font-size: 0.8rem;">Hàng trăm chủ tiệm uy tín trải khắp khu vực miền Nam</span></div>
+                <div><i class="fas fa-gem" style="font-size: 2rem; color: var(--amber);"></i> <strong>Dầu nhớt công nghệ cao</strong><br> <span style="font-size: 0.8rem;">Bảo vệ động cơ vượt trội cùng phụ gia Đức chất lượng cao</span></div>
+            </div>
+        </div>
+
+        <!-- FORM ĐĂNG KÝ THAM GIA SỰ KIỆN NHẬN ÁO VÀ ƯU ĐÃI -->
+        <div class="section" id="dangky">
+            <div style="max-width: 700px; margin: 0 auto;">
+                <div class="form-card">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <i class="fas fa-clipboard-list" style="font-size: 2.5rem; color: var(--amber);"></i>
+                        <h2 style="margin-top: 8px;">Đăng ký ngay hôm nay</h2>
+                        <p>Nhận áo chiến BE + phiếu ưu đãi thay nhớt và bảo dưỡng chuyên sâu giá rẻ</p>
+                    </div>
+                    <form id="registerEventForm">
+                        <div class="form-group">
+                            <label>Họ và tên <span style="color: var(--amber);">*</span></label>
+                            <input type="text" id="fullname" placeholder="Ví dụ: Nguyễn Văn A" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Số điện thoại <span style="color: var(--amber);">*</span></label>
+                            <input type="tel" id="phone" placeholder="0987 654 321" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Biển số xe / Dòng xe (gợi ý)</label>
+                            <input type="text" id="bikeInfo" placeholder="Ví dụ: 59X1-123.45 / Honda Lead">
+                        </div>
+                        <div class="form-group">
+                            <label>Dịch vụ quan tâm</label>
+                            <select id="serviceInterest">
+                                <option value="thay_nhot_uu_dai">Thay nhớt giá ưu đãi + kiểm tra miễn phí</option>
+                                <option value="goi_chuyen_sau_tay_ga">Gói bảo dưỡng chuyên sâu (xe tay ga - 80k)</option>
+                                <option value="goi_chuyen_sau_so">Gói bảo dưỡng chuyên sâu (xe số - 40k)</option>
+                                <option value="tat_ca">Tất cả ưu đãi + nhận áo chiến</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Khu vực sinh sống (để gợi ý cửa hàng gần nhất)</label>
+                            <input type="text" id="area" placeholder="Quận/Huyện, Phường/Xã...">
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%; justify-content: center;"><i class="fas fa-calendar-check"></i> Đăng ký ngay - Nhận ưu đãi</button>
+                        <p style="font-size: 0.7rem; text-align: center; margin-top: 16px;">Thông tin sẽ được gửi đến đối tác AMBER để xác nhận và hẹn lịch tại tiệm gần nhất.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            <p><strong>Công ty TNHH AMBER & Công ty TNHH SONG KIÊN</strong> – Phân phối dầu nhớt công nghệ cao chuẩn châu Âu.</p>
+            <p>📧 Hotline hỗ trợ sự kiện: 1900 6369 | Email: event@amber.vn</p>
+            <p>© 2025 Chương trình hợp tác cùng BE – Dành cho cộng đồng shipper & khách hàng thân thiết.</p>
+            <p><i class="fas fa-shield-alt"></i> Chứng nhận bởi SGS Thụy Sĩ & Trung tâm Quatest 4 (Bộ Khoa học Công Nghệ)</p>
+        </div>
+    </div>
+</footer>
+
+<div id="toastMsg" class="toast-message"><i class="fas fa-check-circle"></i> Đăng ký thành công! Nhân viên sẽ liên hệ trong 24h và gửi thông tin nhận áo chiến BE.</div>
+
+<script>
+    (function() {
+        const form = document.getElementById('registerEventForm');
+        const toast = document.getElementById('toastMsg');
+        const ZALO_PHONE = '0357182609';
+        function showToast(message, isError = false) {
+        toast.innerHTML = message || (isError ? '❌ Có lỗi xảy ra, vui lòng thử lại.' : '✅ Đăng ký thành công! Thông tin đã sẵn sàng gửi qua Zalo.');
+        toast.style.background = isError ? '#d32f2f' : '#1e1e2a';
+        toast.style.display = 'block';
+        setTimeout(() => {
+            toast.style.display = 'none';
+            toast.style.background = '#1e1e2a'; // reset
+        }, 5000);
+    }
+
+    function copyToClipboard(text) {
+        return navigator.clipboard.writeText(text).then(() => true).catch(() => false);
+    }
+
+    function openZaloChat() {
+        // Thử mở bằng Zalo app scheme (mobile) trước, nếu không thì fallback web
+        const zaloAppUrl = `zalo://chat?phone=${ZALO_PHONE}`;
+        const zaloWebUrl = `https://zalo.me/${ZALO_PHONE}`;
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = zaloAppUrl;
+        document.body.appendChild(iframe);
+        setTimeout(() => {
+            document.body.removeChild(iframe);
+            // Nếu không chuyển hướng được (không có app), mở web
+            window.open(zaloWebUrl, '_blank');
+        }, 500);
+    }
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const fullname = document.getElementById('fullname').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const bikeInfo = document.getElementById('bikeInfo').value.trim();
+        const serviceSelect = document.getElementById('serviceInterest');
+        const service = serviceSelect.options[serviceSelect.selectedIndex]?.text || '';
+        const area = document.getElementById('area').value.trim();
+
+        if (!fullname || !phone) {
+            alert('Vui lòng nhập họ tên và số điện thoại để nhận ưu đãi.');
+            return;
+        }
+        if (!/^[0-9]{9,11}$/.test(phone.replace(/\s/g, ''))) {
+            alert('Số điện thoại không hợp lệ. Vui lòng nhập đúng số điện thoại (9-11 số).');
+            return;
+        }
+
+        // Tạo nội dung tin nhắn để gửi qua Zalo
+        const message = `📌 ĐĂNG KÝ SỰ KIỆN THAY NHỚT & ÁO CHIẾN BE\n\n👤 Họ tên: ${fullname}\n📞 SĐT: ${phone}\n🏍️ Xe: ${bikeInfo || 'Chưa cập nhật'}\n⚙️ Dịch vụ quan tâm: ${service}\n📍 Khu vực: ${area || 'Chưa cập nhật'}\n\n(Thông tin từ form đăng ký website AMBER × SONG KIÊN)`;
+
+        // Sao chép nội dung vào clipboard
+        const copied = await copyToClipboard(message);
+        if (copied) {
+            showToast(`📋 Đã sao chép thông tin đăng ký. Vui lòng mở Zalo và gửi tin nhắn đến số ${ZALO_PHONE} để hoàn tất.`, false);
+        } else {
+            showToast(`⚠️ Không thể tự động sao chép. Vui lòng tự gửi thông tin qua Zalo số ${ZALO_PHONE}.`, true);
+        }
+
+        // Mở Zalo chat (app hoặc web)
+        openZaloChat();
+
+        // Tuỳ chọn: reset một số trường nhưng giữ lại để dễ gửi? Có thể reset toàn bộ
+        // form.reset(); // Không reset ngay để người dùng có thể thấy lại thông tin nếu cần
+        // Thay vào đó, chỉ xoá nếu muốn, nhưng tôi không reset để tránh mất dữ liệu vừa copy
+        // Bạn có thể bỏ comment dòng dưới nếu muốn reset
+        // form.reset();
+    });
+    })();
+</script>
+</body>
+</html>
